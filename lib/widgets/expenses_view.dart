@@ -1,45 +1,45 @@
 import 'package:expense_tracker/widgets/expenses_list/expenses_list.dart';
-import 'package:expense_tracker/models/expense.dart';
+import 'package:expense_tracker/models/expense_model.dart';
 import 'package:expense_tracker/widgets/new_expense/new_expense.dart';
 import 'package:flutter/material.dart';
 
-class Expenses extends StatefulWidget {
-  const Expenses({super.key});
+class ExpensesView extends StatefulWidget {
+  const ExpensesView({super.key});
 
   @override
-  State<Expenses> createState() {
-    return _ExpensesState();
+  State<ExpensesView> createState() {
+    return _ExpensesViewState();
   }
 }
 
-class _ExpensesState extends State<Expenses> {
-  final List<Expense> _expenses = [
-    Expense(
+class _ExpensesViewState extends State<ExpensesView> {
+  final List<ExpenseModel> _expenses = [
+    ExpenseModel(
         title: 'flutter course',
         amount: 99.9,
         date: DateTime(2025, 2, 9),
         category: ExpenseCategory.education),
-    Expense(
+    ExpenseModel(
         title: 'surgery',
         amount: 380,
         date: DateTime(2025, 2, 12),
         category: ExpenseCategory.health),
-    Expense(
+    ExpenseModel(
         title: 'water bill',
         amount: 140.62,
         date: DateTime(2025, 2, 14),
         category: ExpenseCategory.house),
-    Expense(
+    ExpenseModel(
         title: 'gas',
         amount: 40,
         date: DateTime(2025, 2, 20),
         category: ExpenseCategory.transportation),
-    Expense(
+    ExpenseModel(
         title: 'family travel',
         amount: 859.4,
         date: DateTime(2025, 2, 21),
         category: ExpenseCategory.leisure),
-    Expense(
+    ExpenseModel(
         title: 'medicines',
         amount: 186.89,
         date: DateTime(2025, 2, 23),

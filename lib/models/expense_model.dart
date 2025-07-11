@@ -26,8 +26,8 @@ const categoryIcons = {
   ExpenseCategory.leisure: Icons.beach_access_sharp
 };
 
-class Expense {
-  Expense(
+class ExpenseModel {
+  ExpenseModel(
       {required this.title,
       required this.amount,
       required this.date,

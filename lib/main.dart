@@ -1,4 +1,4 @@
-import 'package:expense_tracker/widgets/expenses.dart';
+import 'package:expense_tracker/widgets/expenses_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -7,7 +7,7 @@ void main() {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: const Expenses(),
+      home: const ExpensesView(),
     ),
   );
 }
