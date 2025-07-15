@@ -1,8 +1,8 @@
 import 'package:expense_tracker/models/expense_model.dart';
 import 'package:flutter/material.dart';
 
-class ExpenseItem extends StatelessWidget {
-  const ExpenseItem({super.key, required this.expense});
+class ExpenseItemWidget extends StatelessWidget {
+  const ExpenseItemWidget({super.key, required this.expense});
 
   final ExpenseModel expense;
 
@@ -24,7 +24,9 @@ class ExpenseItem extends StatelessWidget {
             Expanded(
               child: Column(
                 children: [
-                  Text(expense.title),
+                  Text(
+                    expense.title,
+                  ),
                   const SizedBox(
                     height: 4,
                   ),

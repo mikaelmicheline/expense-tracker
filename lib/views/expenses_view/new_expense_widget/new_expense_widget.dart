@@ -4,18 +4,18 @@ import 'package:intl/intl.dart';
 
 final formatter = DateFormat.yMd();
 
-class NewExpense extends StatefulWidget {
-  const NewExpense({super.key, required this.onSubmitNewExpanse});
+class NewExpenseWidget extends StatefulWidget {
+  const NewExpenseWidget({super.key, required this.onSubmitNewExpanse});
 
   final void Function(ExpenseModel newExpense) onSubmitNewExpanse;
 
   @override
-  State<NewExpense> createState() {
-    return _NewExpenseState();
+  State<NewExpenseWidget> createState() {
+    return _NewExpenseWidgetState();
   }
 }
 
-class _NewExpenseState extends State<NewExpense> {
+class _NewExpenseWidgetState extends State<NewExpenseWidget> {
   final _titleController = TextEditingController();
   final _amountController = TextEditingController();
   DateTime? _selectedDate;
@@ -89,7 +89,7 @@ class _NewExpenseState extends State<NewExpense> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(18),
+      padding: const EdgeInsets.fromLTRB(18, 50, 18, 18),
       child: Column(
         children: [
           TextField(

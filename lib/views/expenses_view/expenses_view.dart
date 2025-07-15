@@ -1,6 +1,6 @@
-import 'package:expense_tracker/widgets/expenses_list/expenses_list.dart';
+import 'package:expense_tracker/views/expenses_view/expenses_list_widget/expenses_list_widget.dart';
 import 'package:expense_tracker/models/expense_model.dart';
-import 'package:expense_tracker/widgets/new_expense/new_expense.dart';
+import 'package:expense_tracker/views/expenses_view/new_expense_widget/new_expense_widget.dart';
 import 'package:flutter/material.dart';
 
 class ExpensesView extends StatefulWidget {
@@ -49,7 +49,8 @@ class _ExpensesViewState extends State<ExpensesView> {
   void _openAddExpenseOverlay() {
     showModalBottomSheet(
       context: context,
-      builder: (ctx) => NewExpense(
+      isScrollControlled: true,
+      builder: (ctx) => NewExpenseWidget(
         onSubmitNewExpanse: (newExpense) {
           setState(() {
             _expenses.add(newExpense);
@@ -59,8 +60,42 @@ class _ExpensesViewState extends State<ExpensesView> {
     );
   }
 
+  void removeExpense(ExpenseModel expense) {
+    final index = _expenses.indexOf(expense);
+
+    setState(() {
+      _expenses.remove(expense);
+    });
+
+    ScaffoldMessenger.of(context).clearSnackBars();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        duration: const Duration(seconds: 5),
+        content: const Text('Expense deleted'),
+        action: SnackBarAction(
+            label: 'Undo',
+            onPressed: () {
+              setState(() {
+                _expenses.insert(index, expense);
+              });
+            }),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    Widget mainContent = const Center(
+      child: Text('Start adding your expenses!'),
+    );
+
+    if (_expenses.isNotEmpty) {
+      mainContent = ExpensesListWidget(
+        expenses: _expenses,
+        onRemoveExpense: removeExpense,
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('ExpenseTracker'),
@@ -73,9 +108,15 @@ class _ExpensesViewState extends State<ExpensesView> {
       ),
       body: Column(
         children: [
+          const SizedBox(
+            height: 40,
+          ),
           const Text('chart'),
+          const SizedBox(
+            height: 40,
+          ),
           Expanded(
-            child: ExpensesList(expenses: _expenses),
+            child: mainContent,
           ),
         ],
       ),
