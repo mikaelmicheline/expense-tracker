@@ -49,7 +49,13 @@ class _ExpensesViewState extends State<ExpensesView> {
   void _openAddExpenseOverlay() {
     showModalBottomSheet(
       context: context,
-      builder: (ctx) => NewExpense(),
+      builder: (ctx) => NewExpense(
+        onSubmitNewExpanse: (newExpense) {
+          setState(() {
+            _expenses.add(newExpense);
+          });
+        },
+      ),
     );
   }
 
@@ -61,13 +67,13 @@ class _ExpensesViewState extends State<ExpensesView> {
         actions: [
           IconButton(
             onPressed: _openAddExpenseOverlay,
-            icon: Icon(Icons.add_sharp),
+            icon: const Icon(Icons.add_sharp),
           ),
         ],
       ),
       body: Column(
         children: [
-          Text('chart'),
+          const Text('chart'),
           Expanded(
             child: ExpensesList(expenses: _expenses),
           ),
