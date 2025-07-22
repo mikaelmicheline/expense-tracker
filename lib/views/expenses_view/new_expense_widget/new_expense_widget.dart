@@ -99,16 +99,18 @@ class _NewExpenseWidgetState extends State<NewExpenseWidget> {
             controller: _titleController,
           ),
           DropdownButton(
-              value: _selectedCategory,
-              items: ExpenseCategory.values
-                  .map(
-                    (category) => DropdownMenuItem(
-                      value: category,
-                      child: Text(category.name),
-                    ),
-                  )
-                  .toList(),
-              onChanged: _setSelectedCategory),
+            value: _selectedCategory,
+            isExpanded: true,
+            items: ExpenseCategory.values
+                .map(
+                  (category) => DropdownMenuItem(
+                    value: category,
+                    child: Text(category.name),
+                  ),
+                )
+                .toList(),
+            onChanged: _setSelectedCategory,
+          ),
           Row(
             children: [
               Expanded(
